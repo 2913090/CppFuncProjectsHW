@@ -5,7 +5,7 @@ int main()
     int chislo;
     using namespace std;
     setlocale(LC_ALL, "");
-    cout << "Введите шестизнаное число\n";
+    cout << "Введите шестизначное число\n";
     cin >> chislo;
     if (chislo / 100000 == 0 || chislo / 1000000 > 0) {
         cout << "Введенные данные не корректны";
