@@ -27,7 +27,7 @@ int main()
         cin >> strok;
         cout << "Введите количество опозданий\n";
         cin >> opozdaniy;
-        (strok / 100 * 50 - opozdaniy * 20 >= 0) ? cout << "Будет заработано " << strok / 100 * 50 - opozdaniy * 20 << " $." : cout << "Нет возможных решений.";
+        (strok / 100 * 50 - opozdaniy * 20 >= 0) ? cout << "Будет заработано " << strok / 100 * 50 - opozdaniy * 20 << " $." : cout << "Зарплата в 0.";
         break;
     default:
         cout << "Введенные данные некорректны";
