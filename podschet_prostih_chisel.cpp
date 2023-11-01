@@ -15,8 +15,6 @@ int main()
                 e = 0;
                 break;
             }
-            else
-                cout << q << "\t" << w << "\t" << c << "\n";
         }
         if (e == 1)c++;
     }
