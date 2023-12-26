@@ -32,3 +32,5 @@
 dvumernie_massivi 
 # Домашняя работа 20 12
 - smeshenie_masiva
+# Домашняя работа 5 01
+- proverochnaya_rabota
