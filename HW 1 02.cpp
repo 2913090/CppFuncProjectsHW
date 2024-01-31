@@ -1,19 +1,21 @@
-﻿#include <iostream>
+#include <iostream>
 using namespace std;
 const int SIZE2 = 5;
 int stepen(int a, int b) {
+	int c = a;
 	if (b == 0)
 		return 1;
-	else if (b == 1){
+	else if (b == 1) {
 		return a;
 	}
 	else {
-		for (int i = 0; i < b; i++)
-			a *= a;
+		for (int i = 0; i < b-1; i++) {
+			a *= c;
+		}
 		return a;
 	}
 }
-void poisk(int massiv[], const int SIZE,int ishi) {
+void poisk(int massiv[], const int SIZE, int ishi) {
 	bool flag = 1;
 	for (int i = 0; i < SIZE; i++) {
 		if (ishi == massiv[i]) {
@@ -49,11 +51,11 @@ int binar(int massiv[], const int SIZE, int naidi) {
 
 
 int dvavdesyat(int a) {
-	int b=0, otvet = 0;
+	int b = 0, otvet = 0;
 	do {
 		otvet = otvet + stepen(2, b) * (a % 10);
 		b++;
-		a /=10;
+		a /= 10;
 	} while (a > 0);
 	return otvet;
 }
