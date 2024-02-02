@@ -53,3 +53,5 @@ dvumernie_massivi
 каждой строки матрицы.
 # Домашняя работа 3 02
 - calculator_iz_finkciy
+# Домашняя работа 10 02
+- sort_dinamich_massiva сортировка динамического массива
