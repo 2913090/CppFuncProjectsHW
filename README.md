@@ -55,3 +55,5 @@ dvumernie_massivi
 - calculator_iz_finkciy
 # Домашняя работа 10 02
 - sort_dinamich_massiva сортировка динамического массива
+# Домашняя работа 14 02
+- quicksort1
