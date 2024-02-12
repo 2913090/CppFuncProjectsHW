@@ -55,7 +55,7 @@ dvumernie_massivi
 - calculator_iz_finkciy
 # Домашняя работа 10 02
 - sort_dinamich_massiva сортировка динамического массива
-# Домашняя работа 14 02
+# Домашняя работа 14 02 / 17 02
 - quicksort1 быстрая сортировка
 # Домашняя работа 17 02 / 18 02
 - dvumerniyDinamicheskiyMasiv 1. Заполнение двумерного динамического массива
