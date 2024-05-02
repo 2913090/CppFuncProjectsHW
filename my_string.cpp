@@ -30,8 +30,6 @@ public:
 	}
 
 	MyString& operator =(const MyString& other) {
-		//if (other.str == nullptr) {
-		//}
 		if (this == &other) return *this;
 		if (this->str != nullptr) {
 			delete[] this->str;
@@ -88,37 +86,31 @@ public:
 	bool operator >(MyString& other) {
 		int length = (this->length() > other.length()) ? other.length() : this->length();
 		for (int i = 0; i < length; i++) {
-			if (this->str[i] <= other.str[i]) return false;
+			if (this->str[i] > other.str[i]) return true;
 		}
-		if (this->length() <= other.length()) return false;
-		return true;
+		if (this->length() > other.length()) return true;
+		return false;
 	}
 
 	bool operator <(MyString& other) {
-		int length = (this->length() < other.length()) ? other.length() : this->length();
+		int length = (this->length() > other.length()) ? other.length() : this->length();
 		for (int i = 0; i < length; i++) {
-			if (this->str[i] >= other.str[i]) return false;
+			if (this->str[i] < other.str[i]) return true;
 		}
-		if (this->length() >= other.length()) return false;
-		return true;
+		if (this->length() < other.length()) return true;
+		return false;
 	}
 
 	bool operator >=(MyString& other) {
-		int length = (this->length() > other.length()) ? other.length() : this->length();
-		for (int i = 0; i < length; i++) {
-			if (this->str[i] < other.str[i]) return false;
-		}
-		if (this->length() < other.length()) return false;
-		return true;
+		if (this == &other) return true;
+		if (this > &other) return true;
+		return false;
 	}
 
 	bool operator <=(MyString& other) {
-		int length = (this->length() < other.length()) ? other.length() : this->length();
-		for (int i = 0; i < length; i++) {
-			if (this->str[i] > other.str[i]) return false;
-		}
-		if (this->length() > other.length()) return false;
-		return true;
+		if (this == &other) return true;
+		if (this < &other) return true;
+		return false;
 	}
 
 private:
@@ -137,8 +129,11 @@ private:
 
 int main()
 {
-	MyString str1 = "Hello";
-	MyString str2 = "hel";
+	//for (int i = 0; i < 255; i++){
+	//	cout << i << " " << char(i) << endl;
+	//}
+	MyString str2 = "Hello";
+	MyString str1 = "hel";
 	cout << str1 << endl;
 	cout << str2 << endl;
 	cout << str1 << " == " << str2 << " = " << (str1 == str2) << endl;
