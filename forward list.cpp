@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 using namespace std;
 template <typename T>
 class MyForwardList {
@@ -155,7 +155,7 @@ public:
 		}
 		Iterator operator++(int) {
 			Iterator temp = *this;
-			++ptr;
+			ptr = ptr->next;
 			return temp;
 		}
 		bool operator==(const Iterator& other) const {
