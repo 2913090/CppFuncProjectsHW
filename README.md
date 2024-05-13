@@ -85,3 +85,5 @@ dvumernie_massivi
 - my_string
 # Домашняя работа 5 05
 - vector
+# Домашняя работа 
+- normal_list
