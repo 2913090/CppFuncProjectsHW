@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 using namespace std;
 
 template <typename T, typename T2>
@@ -28,7 +28,7 @@ public:
 		cout << endl;
 	}
 	void remove(T key) {
-		removeRecursive(key);
+		removeRecursive(key, this);
 	}
 private:
 	void showRecursive(Node* node) {
@@ -51,10 +51,29 @@ private:
 		return node;
 	}
 	void removeRecursive(T key, Node node) {
-		if (node->left == nullptr && node->right == nullptr) {
+		if (key > node.key) {
+			if (key == node.right.key) {
+				
+			}
+			else {
+				removeRecursive(key, node.right);
+			}
+			
+		}
+		else if (key < node.key) {
+			removeRecursive(key, node.left);
+		}
+		if (node.left == nullptr && node.right == nullptr) {
+
+		}
+		else if ((node.left == nullptr && node.right != nullptr) || (node.left != nullptr && node.right == nullptr)) {
+
+		}
+		else {
 
 		}
 	}
+	void 
 };
 int main()
 {
