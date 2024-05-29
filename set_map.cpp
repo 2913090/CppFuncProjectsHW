@@ -28,7 +28,7 @@ public:
 		cout << endl;
 	}
 	void remove(T key) {
-		removeRecursive(key, this);
+		removeContinue(key, this->root);
 	}
 	T2& operator [](T key) {
 		if (findNodeRecursive(this->root, key) == nullptr) throw out_of_range("error");
@@ -54,35 +54,106 @@ private:
 		}
 		return node;
 	}
-	void removeRecursive(T key, Node delNode) {
+	/*void removeContinue(T key, Node delNode) {
+		Node* thatNode = findNodeRecursive(delNode, key);
+		if (thatNode == nullptr) throw out_of_range("error");
+		Node* preNode;
 		if (key > delNode->key) {
-			Node* preNode = new Node[findPreNodeRecursive(delNode, delNode->right, key)];
+			preNode = new Node[findPreNodeRecursive(delNode, delNode->right, key)];
 		}
 		else if (key < delNode->key) {
-			Node* preNode = new Node[findPreNodeRecursive(delNode, delNode->left, key)];
+			preNode = new Node[findPreNodeRecursive(delNode, delNode->left, key)];
 		}
 		else {
-
-			remove;
+			if (thatNode->right != nullptr) {
+				Node* minRightNode = searchMinNode();
+				this->root =
+					if ()
+				return;
+			}
+			else if (thatNode->right == nullptr && thatNode->left == nullptr) {
+				delete thatNode;
+				this->root = nullptr;
+				return;
+			}
+			else if ()
 		}
-		if (delNode->left == nullptr && delNode->right == nullptr) {
-			if (preNode->right == delNode) {
-				delete delNode;
+
+		if (thatNode->left == nullptr && thatNode->right == nullptr) {
+			if (preNode->right == nullptr) {
+				delete thatNode;
 				preNode->right = nullptr;
 			}
-			else if (preNode->left == delNode) {
-				delete delNode;
+			else if (preNode->left == thatNode) {
+				delete thatNode;
 				preNode->left = nullptr;
 			}
 		}
-		else if ((delNode->left == nullptr && delNode->right != nullptr) || (delNode->left != nullptr && delNode->right == nullptr)) {
+		else if ((thatNode->left == nullptr && thatNode->right != nullptr) || (thatNode->left != nullptr && thatNode->right == nullptr)) {
 
 		}
 		else {
-			if (delNode)
+			if (thatNode) {
+
+			}
+		}
+	}*/
+	
+
+	void removeContinue(T key, Node* thatNode) {
+		if (thatNode->key == key) {
+			if (thatNode->right == nullptr && thatNode->left == nullptr) {
+				this->root = nullptr;
+				delete thatNode;
+				return;
+			}
+			else if (thatNode->right == nullptr && thatNode->left != nullptr) {
+				this->root = thatNode->left;
+				delete thatNode;
+				return;
+			}
+			else if (thatNode->right != nullptr && thatNode->left == nullptr) {
+				this->root = thatNode->right;
+				delete thatNode;
+				return;
+			}
+			else if (thatNode->right != nullptr && thatNode->left != nullptr) {
+				Node* minRightNode = searchMinNode(thatNode->right);
+				Node* preMinRightNode = findPreNodeRecursive(thatNode, thatNode->right, minRightNode->key);
+				preMinRightNode->left = nullptr;
+				Node* rightChild = this->root->right;
+				Node* leftChild = this->root->left;
+				thatNode = minRightNode;
+				minRightNode->right = rightChild;
+				minRightNode->left = leftChild;
+				return;
+			}
+		}
+		Node* delNode = findNodeRecursive(thatNode, key);
+		if (delNode->right == nullptr && delNode->left == nullptr) {
+
+		}
+		else if (delNode->right != nullptr && delNode->left == nullptr) {
+
+		}
+		else if (delNode->right == nullptr && delNode->left != nullptr) {
+
+		}
+		else if (delNode->right != nullptr && delNode->left != nullptr) {
+			Node* minRightNode = searchMinNode(delNode->right);
+			Node* preMinRightNode = findPreNodeRecursive(delNode, delNode->right, minRightNode->key);
+			preMinRightNode->left = nullptr;
+			Node* rightChild = delNode->right;
+			Node* leftChild = delNode->left;
+			Node* preDelNode = findPreNodeRecursive(delNode, (thatNode->key > delNode->key) ? thatNode->left : thatNode->right, delNode->key);
+			thatNode = minRightNode;
+			minRightNode->right = rightChild;
+			minRightNode->left = leftChild;
+			return;
 		}
 	}
-	 
+
+
 	Node* findPreNodeRecursive(Node* node1, Node* node2, T& key) {
 		if (node2 == nullptr) return nullptr;
 		else if (node2->key < key) {
@@ -106,17 +177,25 @@ private:
 	}
 
 	Node* searchMinNode(Node* node) {
-
+		if (node->left == nullptr) {
+			return node;
+		}
+		else {
+			searchMinNode(node->left);
+		}
 	}
 };
 int main()
 {
 	MyMap<int, char> set;
-	set.insert(1, 'q');
-	set.insert(2, 'w');
-	set.insert(3, 'e');
-	set.insert(4, 'r');
+	set.insert(3, 'q');
+	set.insert(7, 'w');
+	set.insert(9, 'e');
+	set.insert(6, 'r');
+	set.insert(8, 't');
+	set.insert(2, 'y');
 	set.show();
-	cout << set[4];
-
+	//cout << set[4];
+	set.remove(7);
+	set.show();
 }
